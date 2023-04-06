@@ -17,6 +17,8 @@ class Post extends Model
     //'img'
     ];
     
+    
+
 }    
 
 
