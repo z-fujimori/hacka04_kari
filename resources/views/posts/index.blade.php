@@ -8,6 +8,12 @@
     <!--<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">-->
 </head>
 <body>
+
+    <div class='login'>
+            @if (Route::has('login'))
+                <a href="{{ route('login') }}">ログイン</a>
+            @endif
+    </div> 
     <h1>Blog Name</h1>
     <div class='posts'>
 
