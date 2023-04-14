@@ -9,6 +9,16 @@ body {
     margin: 0;
     padding: 0;
   }
+  header {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+    background: #eee;
+    box-sizing: border-box;
+  }
   h1 {
     margin: 10px 0;
     padding: 0;
@@ -46,6 +56,6 @@ body {
   .commment_link {
     text-align: right;
   }
- .login{
+  .login{
     text-align: right;
   }

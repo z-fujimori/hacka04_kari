@@ -8,10 +8,29 @@
     <!--<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">-->
 </head>
 <body>
+    @guest
+        @if (Route::has('login'))
+            <div class='login'>
+                    <a href="{{ route('login') }}">ログイン</a>
+            </div>
+        @endif
 
-    <div class='login'>
-            <a href="{{ route('login') }}">ログイン</a>
-    </div> 
+        @if (Route::has('register'))
+            <div class="register">
+                <a href="{{ route('register') }}">ユーザー登録</a>
+            </div>
+        @endif
+    @else
+        <div>
+            <a href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        ログアウト</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf<!-- 悪意のある攻撃を防御、 -->
+            </form>
+        </div>
+    @endif
 
     <h1>Blog Name</h1>
 
