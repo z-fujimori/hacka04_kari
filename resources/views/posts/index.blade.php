@@ -9,32 +9,31 @@
 </head>
 <body>
     @guest
-        @if (Route::has('login'))
-            <div class='login'>
-                    <a href="{{ route('login') }}">ログイン</a>
-            </div>
-        @endif
-
-        @if (Route::has('register'))
-            <div class="register">
+        <div class='login'>
+                <a href="{{ route('login') }}">ログイン</a>
                 <a href="{{ route('register') }}">ユーザー登録</a>
-            </div>
-        @endif
+        </div>
     @else
-        <div>
+        <div class='login'>
             <a href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         ログアウト</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                @csrf<!-- 悪意のある攻撃を防御、 -->
+                @csrf
             </form>
         </div>
-    @endif
+    @endguest
 
     <h1>Blog Name</h1>
 
-    <a href="/posts/create">投稿作成</a>
+    @guest
+    @else
+        <div>
+            <a href="/posts/create">投稿作成</a>
+        </div>
+        <p>{{ Auth::user()->name }}</p>
+    @endguest
 
     <div class='posts'>
         
